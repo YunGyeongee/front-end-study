@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+<div id="root"></div>
+</body>
+<script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script type="text/babel">
+  function App(){
+    // const data = React.useState(); -> 초기값 [undefined, f]
+    const [counter, setCounter] = React.useState(0);
+    const onClick = () => {
+      // setCounter(counter + 1);
+      setCounter((current) => current + 1); // 현재 state를 바탕으로 다음 state를 계산한다면 이렇게 함수를 사용하는게 좀 더 안전함
+    }
+    return (
+      <div>
+        <h3>Total clicks: { counter }</h3>
+        <button onClick={onClick}>Click me</button>
+      </div>
+    );
+  }
+  const root = document.getElementById("root")
+  ReactDOM.render(<App />, root);
+</script>
+</html>
